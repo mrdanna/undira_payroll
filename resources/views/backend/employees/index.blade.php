@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h4 class="fw-bold">Data Pegawai</h4>
-    <a href="" class="btn btn-primary btn-sm">+ Tambah Pegawai</a>
+    <a href="{{ route('emp_create') }}" class="btn btn-primary btn-sm">+ Tambah Pegawai</a>
 </div>
 
 {{-- Pesan Sukses --}}
@@ -33,10 +33,11 @@
                     <td>{{ $p->nama }}</td>
                     <td>{{ $p->email }}</td>
                     <td>{{ $p->alamat }}</td>
-                    <td>{{ $p->jabatan }}</td>
+                    <td>{{ $p->jabatan_id }}</td>
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+
+                        <a href="{{ route('emp_edit', $p->id_emp) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('emp_delete', $p->id_emp) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
