@@ -118,13 +118,6 @@ class EmployeeController extends Controller
 
         $employee->update($data);
 
-        // $employee->update([
-        //     'nama' => $request->nama,
-        //     'email' => $request->email,
-        //     'alamat' => $request->alamat,
-        //     'jabatan_id' => $request->jabatan_id,
-        // ]);
-
         return redirect()->route('emp')->with('success', 'Data pegawai berhasil diperbarui.');
     }
 }
