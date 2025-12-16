@@ -10,9 +10,9 @@
 
     {{-- Header --}}
     <nav class="navbar navbar-light bg-white shadow-sm px-3">
-        <a class="navbar-brand fw-bold text-primary" href="/dashboard">My Dashboard</a>
+        <a class="navbar-brand fw-bold text-primary" href="/dashboard">PAYROLL APP</a>
         <div class="d-flex align-items-center">
-            <span class="me-3 text-muted">Halo, Admin</span>
+            <span class="me-3 text-muted">Halo, {{ Auth::user()->name ?? 'Admin' }}</span>
             <form action="{{ route('logout') }}" method="POST" class="d-inline">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -24,12 +24,13 @@
 
     <div class="container-fluid">
         <div class="row">
+
             {{-- Sidebar --}}
             <aside class="col-12 col-md-3 col-lg-2 bg-white border-end shadow-sm p-3 min-vh-100">
                 <h6 class="fw-bold text-secondary mb-3">Menu</h6>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2">
-                        <a href="/dashboard" class="nav-link active fw-semibold text-primary">Dashboard</a>
+                        <a href="/dashboard" class="nav-link text-dark fw-semibold">Dashboard</a>
                     </li>
                     <li class="nav-item mb-2">
                         <a href="{{ route('emp') }}" class="nav-link text-dark">Pegawai</a>
@@ -48,13 +49,12 @@
 
             {{-- Konten --}}
             <main class="col-12 col-md-9 col-lg-10 p-4">
-
-
                 {{-- Tempat Konten Utama --}}
                 <div class="mt-4">
                     @yield('content')
                 </div>
             </main>
+
         </div>
     </div>
 

@@ -31,6 +31,15 @@ class PayrollController extends Controller
             'jumlah' => 'required|array',
         ]);
 
+        $cek = Payroll::where('id_emp', $request->emp_id)
+                  ->where('bulan', $request->bulan)
+                  ->first();
+
+        if ($cek) {
+            return back()->with('error', 'Payroll pegawai untuk bulan ini sudah dibuat!')
+                        ->withInput();
+        }
+
         // 2. Simpan ke tabel payrolls
         $payroll = Payroll::create([
             'id_emp'     => $request->emp_id,
@@ -111,7 +120,10 @@ class PayrollController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Payroll berhasil diperbarui!');
+        //return back()->with('success', 'Payroll berhasil diperbarui!');
+
+        return redirect()->route('payroll_show', $request->emp_id)
+                        ->with('success', 'Payroll berhasil diperbarui!');
     }
 
      public function destroy($id)

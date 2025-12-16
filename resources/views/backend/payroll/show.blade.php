@@ -5,6 +5,10 @@
 @section('content')
 <h4 class="fw-bold mb-3">Riwayat Payroll - {{ $employee->nama }}</h4>
 
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-body">
         <table class="table table-bordered table-striped">
